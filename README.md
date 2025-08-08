@@ -1,57 +1,101 @@
-# AutoPix-Reforged
+# AutoPix Reforged
 
-> ℹ️ **Nota:** Este é um porte não oficial do plugin [AutoPix para Spigot](https://github.com/warleysr/autopix), originalmente criado por [@warleysr](https://github.com/warleysr). Todo o crédito pela ideia e funcionalidade original pertence a ele.
+**Sistema de pagamentos PIX integrado ao Minecraft Forge**
 
-O AutoPix-Reforged é um mod para **Minecraft (Forge/Fabric)** que integra **código QR PIX** dentro do jogo e permite que os jogadores comprem itens e recebam automaticamente em questão de segundos.
+Porte do plugin AutoPix original (Spigot/Bukkit) para Minecraft Forge 1.19.2.
 
-## Como funciona?
+## 📋 Sobre
 
-O jogador digita um comando (ex: `/comprar`) e um menu customizado será mostrado com os produtos disponíveis.
+O AutoPix Reforged é um mod que permite que jogadores realizem pagamentos PIX diretamente no jogo, com integração completa ao MercadoPago e geração automática de QR codes.
 
-*(Imagem do menu de produtos do plugin original)*
+### ✨ Recursos
 
-Ao confirmar a compra, o jogador receberá um mapa customizado com o QR code para pagar via PIX:
+- **Comandos integrados**: `/autopix` e `/autopixmenu`
+- **Integração MercadoPago**: Validação automática de pagamentos
+- **QR Codes**: Geração automática para facilitar pagamentos
+- **Sistema de transações**: Gerenciamento completo de pedidos
+- **Configuração flexível**: Personalização via arquivo de configuração
+- **Suporte a MySQL**: Armazenamento persistente de dados
+- **Interface amigável**: Menus intuitivos para compras
 
-*(Imagem do QR code no mapa do plugin original)*
+## 🚀 Instalação
 
-## Modos de validação
+1. Baixe a versão mais recente do mod
+2. Coloque o arquivo `.jar` na pasta `mods` do seu servidor/cliente Forge
+3. Configure o arquivo de configuração conforme necessário
+4. Reinicie o servidor/cliente
 
-* **Modo automático:** No modo automático, o jogador só precisa aguardar a confirmação do pagamento. A cada `x` segundos, o mod faz uma verificação nos status dos pedidos pendentes e os ativa ao serem aprovados. Quanto menor o tempo de verificação, mais instantânea será a confirmação, porém isso pode gerar mais requisições para a API do Mercado Pago.
-* **Modo manual:** Após pagar, o jogador obtém o código da transação PIX e usa um comando como `/pix validar <Codigo>`. A vantagem deste modo é a ausência de taxas, pois o PIX é realizado diretamente para a chave configurada. A validação busca a transação a partir do código E2E do PIX. O modo automático é o mais recomendado.
+## ⚙️ Configuração
 
-Você poderá configurar comandos para serem executados após a compra, como dar um cargo de VIP, dinheiro, itens, etc.
+O mod utiliza o sistema de configuração do Forge. As principais configurações incluem:
 
-## Comandos Planejados
+- **MercadoPago**: Token de acesso e configurações da API
+- **PIX**: Chave PIX e dados do beneficiário
+- **Banco de dados**: Configurações de conexão MySQL
+- **Timeouts**: Tempos limite para validação e expiração
+- **Interface**: Personalização de menus e mensagens
 
-* `/pix info`: Abre uma interface com instruções de como o sistema funciona.
-* `/pix lista`: Mostra a lista de ordens de pagamento criadas pelo jogador.
-* `/pix lista <Jogador>`: (Para Admins) Permite ver as ordens de outro jogador.
-* `/pix reload`: (Para Admins) Recarrega as configurações do mod.
-* `/comprar <menu>`: Abre um menu de compra específico, permitindo a criação de múltiplas lojas.
+## 🎮 Comandos
 
-## Permissões
+- `/autopix <código>` - Valida um código PIX
+- `/autopixmenu` - Abre o menu de compras
+- `/pix <código>` - Alias para `/autopix`
+- `/comprarpix` - Alias para `/autopixmenu`
 
-As permissões serão gerenciadas através dos níveis de OP do servidor ou via integração com mods de permissões populares (como FTB Ranks ou LuckPerms para Fabric/Forge).
+## 🔧 Desenvolvimento
 
-* **Nível de Usuário:** `autopix.use` (provisório) - Permite realizar compras por PIX.
-* **Nível de Admin:** `autopix.admin` (provisório) - Permite usar comandos de administrador, como `reload` e ver a lista de outros jogadores.
+### Pré-requisitos
 
-## Outras Features
+- Java 17+
+- Minecraft Forge 1.19.2 (versão 43.5.0+)
+- Gradle
 
-* Todas as mensagens editáveis.
-* Limite de tempo entre as ações para evitar sobrecarga.
-* Suporte a múltiplos menus de venda.
+### Compilação
 
-## Download e Instalação (Forge/Fabric)
+```bash
+./gradlew build
+```
 
-1.  Baixe a última versão na aba de **Releases** do projeto.
-2.  Coloque o arquivo `.jar` na pasta `mods` do seu servidor e também na pasta `mods` do Minecraft de todos os jogadores que forem entrar nele.
-3.  Inicie o servidor uma vez para gerar os arquivos de configuração na pasta `config`.
-4.  Edite os arquivos de configuração, inserindo seu Token do Mercado Pago, sua chave PIX e as credenciais do banco de dados.
-5.  Reinicie o servidor.
+### Estrutura do Projeto
+
+```
+src/main/java/io/github/oraculo/autopix/
+├── AutoPixMod.java           # Classe principal do mod
+├── config/                   # Configurações
+├── commands/                 # Comandos do mod
+├── domain/                   # Entidades de domínio
+├── events/                   # Manipuladores de eventos
+├── manager/                  # Gerenciadores de sistema
+├── network/                  # Comunicação cliente-servidor
+└── utils/                    # Utilitários
+```
+
+## 📝 Créditos
+
+- **Autor original**: [warleysr](https://github.com/warleysr) - Plugin AutoPix para Spigot/Bukkit
+- **Porte para Forge**: [Leonne Martins (Oraculo-sh)](https://github.com/Oraculo-sh)
+
+## 📄 Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para:
+
+1. Fazer fork do projeto
+2. Criar uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abrir um Pull Request
+
+## 📞 Suporte
+
+Para suporte e dúvidas:
+
+- Abra uma [issue](https://github.com/Oraculo-sh/autopix-reforged/issues)
+- Entre em contato via GitHub
 
 ---
-## Agradecimentos e Créditos
 
-* A **@warleysr** pela criação do incrível plugin [AutoPix](https://github.com/warleysr/autopix) original, que serviu como base e inspiração para este projeto.
-* A **@rapust** pela criação da biblioteca [QRCodeMap](https://github.com/rapust/QRCodeMap), que tornou a exibição de QR codes no jogo possível.
+**Nota**: Este é um porte não oficial do plugin AutoPix original. Certifique-se de ter as devidas permissões e configurações do MercadoPago antes de usar em produção.
