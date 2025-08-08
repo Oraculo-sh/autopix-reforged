@@ -1,0 +1,109 @@
+# Configuração de exemplo para o AutoPix Reforged
+# Copie este arquivo para a pasta config do seu servidor/cliente como autopix-common.toml
+
+[mercadopago]
+    # Token de acesso do MercadoPago (obrigatório)
+    token = "SEU_TOKEN_AQUI"
+
+[pix]
+    # Chave PIX para recebimento (obrigatório)
+    key = "SUA_CHAVE_PIX_AQUI"
+    # Nome do beneficiário
+    beneficiary_name = "Seu Nome ou Empresa"
+    # Modo debug (true/false)
+    debug = false
+    # Usar mapa para exibir QR code (true/false)
+    use_map = true
+
+[automatic_activation]
+    # Intervalo em segundos para verificação automática de pagamentos
+    interval = 30
+
+[mysql]
+    # Configurações do banco de dados MySQL
+    host = "localhost"
+    port = 3306
+    database = "autopix"
+    username = "root"
+    password = "senha"
+
+[timeouts]
+    # Tempo limite para validação em minutos
+    validation = 15
+    # Tempo limite para listagem em segundos
+    list = 30
+    # Tempo limite para criação de pedido em segundos
+    order_creation = 60
+    # Tempo limite para holograma em segundos
+    hologram = 5
+    # Tempo limite para cancelamento em segundos
+    cancel = 10
+    # Tempo limite para top em segundos
+    top = 30
+
+[payment_map]
+    # Nome do mapa de pagamento
+    name = "§6Pagamento PIX"
+    # Descrição do mapa
+    description = "Escaneie o QR Code para pagar"
+    # Tempo de exibição em segundos
+    time = 300
+    # Intervalo de verificação em segundos
+    verification_interval = 10
+
+[menu]
+    [menu.main]
+        # Título do menu principal
+        title = "§6Loja AutoPix"
+        # Tamanho do menu (múltiplo de 9)
+        size = 54
+    
+    [menu.confirmation]
+        # Título do menu de confirmação
+        title = "§6Confirmar Compra"
+
+[sounds]
+    # Som de sucesso
+    success = "entity.experience_orb.pickup"
+    # Som de erro
+    error = "entity.villager.no"
+    # Som de aviso
+    warning = "block.note_block.pling"
+
+[top_donors]
+    # Limite de doadores no top
+    limit = 10
+
+[help_book]
+    # Título do livro de ajuda
+    title = "§6AutoPix - Ajuda"
+    # Autor do livro
+    author = "AutoPix"
+
+# INSTRUÇÕES DE CONFIGURAÇÃO:
+#
+# 1. MercadoPago Token:
+#    - Acesse https://www.mercadopago.com.br/developers/
+#    - Crie uma aplicação
+#    - Copie o Access Token de produção
+#
+# 2. Chave PIX:
+#    - Use sua chave PIX (CPF, CNPJ, email, telefone ou chave aleatória)
+#    - Esta chave será usada para gerar os QR codes
+#
+# 3. Banco de Dados:
+#    - Crie um banco MySQL chamado 'autopix'
+#    - Configure as credenciais de acesso
+#    - O mod criará as tabelas automaticamente
+#
+# 4. Timeouts:
+#    - Ajuste conforme necessário
+#    - Valores muito baixos podem sobrecarregar a API
+#    - Valores muito altos podem deixar o sistema lento
+#
+# 5. Menus:
+#    - Personalize títulos e tamanhos conforme desejado
+#    - Use códigos de cor do Minecraft (&, §)
+#
+# Para mais informações, consulte:
+# https://github.com/Oraculo-sh/autopix-reforged
