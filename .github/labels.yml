@@ -1,0 +1,203 @@
+# GitHub Labels Configuration for AutoPix Reforged
+# Use with: gh label sync --file .github/labels.yml
+
+# Priority Labels
+- name: "priority: critical"
+  color: "d73a4a"
+  description: "Critical priority - needs immediate attention"
+
+- name: "priority: high"
+  color: "ff6b6b"
+  description: "High priority - should be addressed soon"
+
+- name: "priority: medium"
+  color: "ffa726"
+  description: "Medium priority - normal timeline"
+
+- name: "priority: low"
+  color: "66bb6a"
+  description: "Low priority - can be addressed later"
+
+# Type Labels
+- name: "type: bug"
+  color: "d73a4a"
+  description: "Something isn't working"
+  aliases: ["bug"]
+
+- name: "type: enhancement"
+  color: "a2eeef"
+  description: "New feature or request"
+  aliases: ["enhancement", "feature"]
+
+- name: "type: documentation"
+  color: "0075ca"
+  description: "Improvements or additions to documentation"
+  aliases: ["documentation", "docs"]
+
+- name: "type: refactor"
+  color: "fef2c0"
+  description: "Code refactoring without functional changes"
+
+- name: "type: performance"
+  color: "ff9800"
+  description: "Performance improvements"
+
+- name: "type: security"
+  color: "d73a4a"
+  description: "Security related issues"
+
+- name: "type: maintenance"
+  color: "fbca04"
+  description: "Maintenance and housekeeping"
+
+# Status Labels
+- name: "status: needs-triage"
+  color: "ededed"
+  description: "Needs initial review and categorization"
+  aliases: ["needs-triage"]
+
+- name: "status: confirmed"
+  color: "28a745"
+  description: "Issue has been confirmed and reproduced"
+
+- name: "status: in-progress"
+  color: "0052cc"
+  description: "Currently being worked on"
+
+- name: "status: blocked"
+  color: "d73a4a"
+  description: "Blocked by external dependencies"
+
+- name: "status: waiting-feedback"
+  color: "fbca04"
+  description: "Waiting for feedback from reporter"
+
+- name: "status: duplicate"
+  color: "cfd3d7"
+  description: "This issue or pull request already exists"
+  aliases: ["duplicate"]
+
+- name: "status: wontfix"
+  color: "ffffff"
+  description: "This will not be worked on"
+  aliases: ["wontfix"]
+
+- name: "status: invalid"
+  color: "e4e669"
+  description: "This doesn't seem right"
+  aliases: ["invalid"]
+
+# Component Labels
+- name: "component: core"
+  color: "1d76db"
+  description: "Core mod functionality"
+
+- name: "component: commands"
+  color: "1d76db"
+  description: "Command system and implementation"
+
+- name: "component: config"
+  color: "1d76db"
+  description: "Configuration system"
+
+- name: "component: database"
+  color: "1d76db"
+  description: "Database integration and queries"
+
+- name: "component: mercadopago"
+  color: "1d76db"
+  description: "MercadoPago API integration"
+
+- name: "component: qr-code"
+  color: "1d76db"
+  description: "QR code generation and handling"
+
+- name: "component: ui"
+  color: "1d76db"
+  description: "User interface and menus"
+
+- name: "component: network"
+  color: "1d76db"
+  description: "Network communication"
+
+- name: "component: events"
+  color: "1d76db"
+  description: "Event handling system"
+
+# Difficulty Labels
+- name: "difficulty: beginner"
+  color: "7057ff"
+  description: "Good for newcomers"
+  aliases: ["good first issue"]
+
+- name: "difficulty: intermediate"
+  color: "5319e7"
+  description: "Requires some experience"
+
+- name: "difficulty: advanced"
+  color: "3c1361"
+  description: "Requires significant experience"
+
+# Version Labels
+- name: "version: 1.19.2"
+  color: "0e8a16"
+  description: "Related to Minecraft 1.19.2"
+
+- name: "version: 1.20.x"
+  color: "0e8a16"
+  description: "Related to Minecraft 1.20.x"
+
+- name: "version: 1.21.x"
+  color: "0e8a16"
+  description: "Related to Minecraft 1.21.x"
+
+# Special Labels
+- name: "breaking-change"
+  color: "d73a4a"
+  description: "Introduces breaking changes"
+
+- name: "help-wanted"
+  color: "008672"
+  description: "Extra attention is needed"
+
+- name: "question"
+  color: "d876e3"
+  description: "Further information is requested"
+
+- name: "dependencies"
+  color: "0366d6"
+  description: "Pull requests that update a dependency file"
+
+- name: "testing"
+  color: "f9d0c4"
+  description: "Related to testing"
+
+- name: "ci/cd"
+  color: "000000"
+  description: "Continuous Integration/Deployment"
+
+# Platform Labels
+- name: "platform: forge"
+  color: "b60205"
+  description: "Minecraft Forge specific"
+
+- name: "platform: neoforge"
+  color: "b60205"
+  description: "NeoForge specific"
+
+- name: "platform: fabric"
+  color: "b60205"
+  description: "Fabric specific (future)"
+
+# Review Labels
+- name: "review: approved"
+  color: "28a745"
+  description: "Pull request approved"
+
+- name: "review: changes-requested"
+  color: "d73a4a"
+  description: "Changes requested in review"
+
+- name: "review: needs-review"
+  color: "fbca04"
+  description: "Needs code review"
