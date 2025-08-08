@@ -1,3 +1,7 @@
+# ignore files
+docs/
+PROMPT_PORTABILIDADE.md
+
 # eclipse
 bin
 *.launch
