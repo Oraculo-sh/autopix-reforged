@@ -77,7 +77,7 @@ src/main/java/io/github/oraculo/autopix/
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está licenciado sob a Licença GPL-3.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
 ## 🤝 Contribuição
 
