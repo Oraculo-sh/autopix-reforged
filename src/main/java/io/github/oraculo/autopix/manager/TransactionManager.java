@@ -81,7 +81,7 @@ public class TransactionManager {
         }
         
         // Verifica se a transação expirou
-        if (transaction.isExpired(AutoPixConfig.VALIDATION_TIMEOUT.get())) {
+        if (transaction.isExpired(AutoPixConfig.TIMEOUT_VALIDATION.get())) {
             expireTransaction(transaction);
             return false;
         }
@@ -145,7 +145,7 @@ public class TransactionManager {
                 transaction.getStatus() == PixTransaction.TransactionStatus.PENDING) {
                 expireTransaction(transaction);
             }
-        }, AutoPixConfig.VALIDATION_TIMEOUT.get(), TimeUnit.MINUTES);
+        }, AutoPixConfig.TIMEOUT_VALIDATION.get(), TimeUnit.MINUTES);
     }
     
     /**
@@ -166,7 +166,7 @@ public class TransactionManager {
      */
     private void startCleanupTask() {
         scheduler.scheduleAtFixedRate(() -> {
-            int timeoutMinutes = AutoPixConfig.VALIDATION_TIMEOUT.get();
+            int timeoutMinutes = AutoPixConfig.TIMEOUT_VALIDATION.get();
             
             activeTransactions.values().removeIf(transaction -> {
                 if (transaction.isExpired(timeoutMinutes) && 
