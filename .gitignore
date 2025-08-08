@@ -1,5 +1,73 @@
-autopix-original/
+# Gradle
+.gradle/
 build/
+out/
 
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
 
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# Visual Studio Code
+.vscode/
+
+# NetBeans
+nbproject/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Minecraft Development Kit
+run/
+logs/
+crash-reports/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Forge specific
+.mixin.out/
+mappings/
+
+# Java
+*.class
+*.jar
+!gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Package Files
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+# autopix original
+autopix-original/
 
