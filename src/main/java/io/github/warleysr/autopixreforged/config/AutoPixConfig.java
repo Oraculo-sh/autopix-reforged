@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import io.github.warleysr.autopixreforged.domain.Product;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -13,6 +14,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AutoPixConfig {
     private static final String CONFIG_DIR = "config/autopix-reforged";
@@ -233,6 +237,72 @@ public class AutoPixConfig {
     
     public JsonObject getProducts() {
         return config.getAsJsonObject("products");
+    }
+    
+    public List<Product> getProductsList() {
+        List<Product> products = new ArrayList<>();
+        JsonObject productsObj = getProducts();
+        
+        for (String key : productsObj.keySet()) {
+            JsonObject productData = productsObj.getAsJsonObject(key);
+            Product product = new Product();
+            product.setId(key);
+            product.setName(productData.get("name").getAsString());
+            product.setPrice(productData.get("price").getAsDouble());
+            product.setItem(productData.get("item").getAsString());
+            
+            if (productData.has("commands")) {
+                JsonObject commandsObj = productData.getAsJsonObject("commands");
+                if (commandsObj.has("commands")) {
+                    List<String> commands = new ArrayList<>();
+                    commandsObj.getAsJsonArray("commands").forEach(element -> 
+                        commands.add(element.getAsString()));
+                    product.setCommands(commands);
+                }
+                if (commandsObj.has("pre_commands")) {
+                    List<String> preCommands = new ArrayList<>();
+                    commandsObj.getAsJsonArray("pre_commands").forEach(element -> 
+                        preCommands.add(element.getAsString()));
+                    product.setPreCommands(preCommands);
+                }
+            }
+            
+            products.add(product);
+        }
+        
+        return products;
+    }
+    
+    public Product getProductById(String id) {
+        JsonObject productsObj = getProducts();
+        if (!productsObj.has(id)) {
+            return null;
+        }
+        
+        JsonObject productData = productsObj.getAsJsonObject(id);
+        Product product = new Product();
+        product.setId(id);
+        product.setName(productData.get("name").getAsString());
+        product.setPrice(productData.get("price").getAsDouble());
+        product.setItem(productData.get("item").getAsString());
+        
+        if (productData.has("commands")) {
+            JsonObject commandsObj = productData.getAsJsonObject("commands");
+            if (commandsObj.has("commands")) {
+                List<String> commands = new ArrayList<>();
+                commandsObj.getAsJsonArray("commands").forEach(element -> 
+                    commands.add(element.getAsString()));
+                product.setCommands(commands);
+            }
+            if (commandsObj.has("pre_commands")) {
+                List<String> preCommands = new ArrayList<>();
+                commandsObj.getAsJsonArray("pre_commands").forEach(element -> 
+                    preCommands.add(element.getAsString()));
+                product.setPreCommands(preCommands);
+            }
+        }
+        
+        return product;
     }
     
     public String getMessage(String key) {

@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 public class AutoPixReforged {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "autopixreforged";
+    public static final String MOD_ID = MODID; // Alias for compatibility
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     

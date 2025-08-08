@@ -25,7 +25,7 @@ public class ShopMenuProvider implements MenuProvider {
     
     @Override
     public Component getDisplayName() {
-        return Component.literal(AutoPixReforged.getConfig().getMenuConfig().getString("principal.titulo"));
+        return Component.literal(AutoPixReforged.getConfig().getMessage("menu_title"));
     }
     
     @Nullable
@@ -58,7 +58,7 @@ public class ShopMenuProvider implements MenuProvider {
         }
         
         // Add products
-        List<Product> products = AutoPixReforged.getConfig().getProducts();
+        List<Product> products = AutoPixReforged.getConfig().getProductsList();
         int slot = 10; // Start from second row, second column
         
         for (Product product : products) {

@@ -41,7 +41,7 @@ public class SoundPacket {
             if (player != null) {
                 SoundEvent sound = getSoundFromName(packet.soundName);
                 if (sound != null) {
-                    player.level().playSound(
+                    player.getLevel().playSound(
                         null,
                         player.getX(),
                         player.getY(),
