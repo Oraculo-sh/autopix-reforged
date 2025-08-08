@@ -32,7 +32,7 @@ public class ConfirmationMenuProvider implements MenuProvider {
     
     @Override
     public Component getDisplayName() {
-        return Component.literal(AutoPixReforged.getConfig().getMenuConfig().getString("confirmar.titulo"));
+        return Component.literal(AutoPixReforged.getConfig().getMessage("confirm_title"));
     }
     
     @Nullable
@@ -105,8 +105,7 @@ public class ConfirmationMenuProvider implements MenuProvider {
         lore.add(Component.literal(""));
         
         if (product.getDescription() != null && !product.getDescription().isEmpty()) {
-            String[] descLines = product.getDescription().split("\\n");
-            for (String line : descLines) {
+            for (String line : product.getDescription()) {
                 lore.add(Component.literal("§7" + line));
             }
             lore.add(Component.literal(""));

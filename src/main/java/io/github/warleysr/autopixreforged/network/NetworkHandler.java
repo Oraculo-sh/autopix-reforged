@@ -33,6 +33,10 @@ public class NetworkHandler {
                 .add();
     }
     
+    public static void init() {
+        registerMessages();
+    }
+    
     private static int nextId() {
         return packetId++;
     }

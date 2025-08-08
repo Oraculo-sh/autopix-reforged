@@ -107,17 +107,12 @@ public class ShopMenu extends ChestMenu {
         CompletableFuture.runAsync(() -> {
             try {
                 // Create order
-                Order order = new Order();
-                order.setPlayerName(player.getName().getString());
-                order.setPlayerUuid(player.getUUID().toString());
-                order.setProductId(product.getId());
-                order.setPrice(product.getPrice());
-                order.setStatus(Order.OrderStatus.PENDING);
-                order.setCreated(System.currentTimeMillis());
+                Order order = OrderManager.createOrder(player, product.getId(), product.getPrice());
                 
-                // Save order to database
-                int orderId = OrderManager.createOrder(order);
-                order.setId(orderId);
+                if (order == null) {
+                    player.sendSystemMessage(Component.literal("§cErro ao criar pedido. Tente novamente."));
+                    return;
+                }
                 
                 // Create PIX payment
                 PixData pixData = MercadoPagoAPI.createPixPayment(order);
@@ -126,7 +121,7 @@ public class ShopMenu extends ChestMenu {
                     OrderManager.savePixData(pixData);
                     
                     // Generate QR Code
-                    String qrCodePath = QRCodeGenerator.generateQRCode(pixData.getQrCode(), orderId);
+                    String qrCodePath = QRCodeGenerator.generateQRCode(pixData.getQrCode(), order.getId());
                     
                     // Send payment info to player
                     player.sendSystemMessage(Component.literal("§a§l=== Pagamento PIX Gerado ==="));
@@ -140,12 +135,12 @@ public class ShopMenu extends ChestMenu {
                     
                     player.sendSystemMessage(Component.literal("§7Use §b/pix validar " + pixData.getQrCode() + " §7após o pagamento"));
                     
-                    int paymentTimeout = AutoPixReforged.getConfig().getConfig().getInt("mapa.tempo-pagar");
+                    int paymentTimeout = AutoPixReforged.getConfig().getPaymentTimeoutMinutes();
                     player.sendSystemMessage(Component.literal("§cTempo para pagamento: " + paymentTimeout + " minutos"));
-                    
+                
                 } else {
                     player.sendSystemMessage(Component.literal("§cErro ao gerar pagamento PIX. Tente novamente."));
-                    OrderManager.updateOrderStatus(orderId, Order.OrderStatus.CANCELLED);
+                    OrderManager.updateOrderStatus(order.getId(), Order.OrderStatus.CANCELLED);
                 }
                 
             } catch (Exception e) {
