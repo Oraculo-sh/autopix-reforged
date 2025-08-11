@@ -2,6 +2,11 @@
 docs/
 PROMPT_PORTABILIDADE.md
 
+# Forge template files (should not be included in mod projects)
+changelog.txt
+LICENSE.txt
+README.txt
+
 # Compiled class file
 *.class
 
